@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+option csharp_namespace = "GrpcAPIServer.Services";
+
+package EmployeeInfo;
+
+
+
+service Employee {
+	rpc GetEmployeeDetails (EmployeeRequest) returns ( stream EmployeeResponse);
+}
+
+
+
+message EmployeeRequest {
+	string employeeId = 1;
+	string emplouyeeName = 2;
+	enum SearchBy {
+		id =0;
+		name = 1;
+	}
+	SearchBy searchBy = 3;
+}
+
+
+message EmployeeResponse {
+	int32 id = 1;
+	string name = 2;
+	string address =3;
+	string phone =4;
+	string dateOfBirth =5;
+
+}
